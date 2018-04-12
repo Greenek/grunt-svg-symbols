@@ -9,83 +9,82 @@
 'use strict';
 
 module.exports = function(grunt) {
-
   // Project configuration.
   grunt.initConfig({
     jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>'
-      ],
+      all: ['Gruntfile.js', 'tasks/*.js', '<%= nodeunit.tests %>'],
       options: {
-        jshintrc: '.jshintrc'
-      }
+        jshintrc: '.jshintrc',
+      },
     },
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp', 'tmp.svg', 'tmp.html']
+      tests: ['tmp'],
     },
 
     // Configuration to be run (and then tested).
     svg_symbols: {
       default_options: {
-        options: {
-        },
+        options: {},
         files: {
-          'tmp/default_options': ['test/fixtures/mail.svg', 'test/fixtures/lock.svg']
-        }
-      },
-      current_folder: {
-        options: {
+          'tmp/default_options.svg': [
+            'test/fixtures/mail.svg',
+            'test/fixtures/lock.svg',
+          ],
         },
-        files: {
-          'tmp.svg': ['test/fixtures/mail.svg', 'test/fixtures/lock.svg']
-        }
       },
       custom_options: {
         options: {
           precision: 3,
           className: 'u-display-none',
           width: 24,
-          height: 24
+          height: 24,
         },
         files: {
-          'tmp/custom_options': ['test/fixtures/*.svg']
-        }
+          'tmp/custom_options.svg': ['test/fixtures/*.svg'],
+        },
       },
       current_color: {
         options: {
-          currentColor: true
+          currentColor: true,
         },
         files: {
-          'tmp/current_color': ['test/fixtures/mail.svg', 'test/fixtures/clock.svg', 'test/fixtures/upload.svg']
-        }
+          'tmp/current_color.svg': [
+            'test/fixtures/mail.svg',
+            'test/fixtures/clock.svg',
+            'test/fixtures/upload.svg',
+          ],
+        },
       },
       remove_attrs: {
         options: {
-          removeAttrs: 'fill|fill-rule'
+          removeAttrs: 'fill|fill-rule',
         },
         files: {
-          'tmp/remove_attrs': ['test/fixtures/mail.svg', 'test/fixtures/lock.svg']
-        }
+          'tmp/remove_attrs.svg': [
+            'test/fixtures/mail.svg',
+            'test/fixtures/lock.svg',
+          ],
+        },
       },
       preserve_viewbox: {
         options: {
-          preserveViewBox: true
+          preserveViewBox: true,
         },
         files: {
-          'tmp/preserve_viewbox': ['test/fixtures/mail2.svg', 'test/fixtures/lock2.svg']
-        }
-      }
+          'tmp/preserve_viewbox.svg': [
+            'test/fixtures/mail2.svg',
+            'test/fixtures/lock2.svg',
+          ],
+        },
+      },
     },
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js']
-    }
-
+      tests: ['test/*_test.js'],
+    },
   });
 
   // Actually load this plugin's task(s).
@@ -102,5 +101,4 @@ module.exports = function(grunt) {
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
-
 };
