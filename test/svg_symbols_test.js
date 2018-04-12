@@ -1,83 +1,30 @@
 'use strict';
 
 var grunt = require('grunt');
+var path = require('path');
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
-
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
- */
+var read = function() {
+  var filepath = path.join.apply(null, arguments);
+  return grunt.util.normalizelf(grunt.file.read(filepath));
+};
 
 exports.svg_symbols = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
-  default_options: function(test) {
-    test.expect(1);
+  prestorified_files: function(test) {
+    var files = [
+      'current_color.svg',
+      'custom_options.svg',
+      'default_options.svg',
+      'preserve_viewbox.svg',
+      'remove_attrs.svg'
+    ];
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.expect(files.length);
 
-    test.done();
-  },
-  current_folder: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp.svg');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should also work at the project root level.');
-
-    test.done();
-  },
-  custom_options: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-    test.done();
-  },
-  current_color: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/current_color');
-    var expected = grunt.file.read('test/expected/current_color');
-    test.equal(actual, expected, 'should replace fill and stroke attributes.');
-
-    test.done();
-  },
-  remove_attrs: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/remove_attrs');
-    var expected = grunt.file.read('test/expected/remove_attrs');
-    test.equal(actual, expected, 'should remove fill and fill-rule attributes.');
-
-    test.done();
-  },
-  preserve_viewbox: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/preserve_viewbox');
-    var expected = grunt.file.read('test/expected/preserve_viewbox');
-    test.equal(actual, expected, 'should preserve viewbox attribute.');
+    files.forEach(function(file) {
+      var actual = read('tmp', file);
+      var expected = read('test/expected', file);
+      test.equal(actual, expected, 'task output should equal ' + file);
+    });
 
     test.done();
   }
