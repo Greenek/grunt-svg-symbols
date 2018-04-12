@@ -1,57 +1,7 @@
 {
-  "name": "grunt-svg-symbols",
-  "description": "Generate an SVG icon system (based on `<symbol>`) of a specified folder",
+  "name": "@greenek/grunt-svg-symbols",
   "version": "1.0.0",
-  "author": {
-    "name": "Manuel Wieser",
-    "email": "office@manuelwieser.com",
-    "url": "http://manu.ninja/"
-  },
-  "contributors": [
-    {
-      "name": "Ben Boyle",
-      "email": "benjamins.boyle@gmail.com"
-    },
-    {
-      "name": "David Marsalone",
-      "email": "d.marsalone@gmail.com"
-    },
-    {
-      "name": "Martin Lenzelbauer",
-      "email": "contact@mlenzelbauer.at"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Lorti/grunt-svg-symbols.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Lorti/grunt-svg-symbols/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/Lorti/grunt-svg-symbols/blob/master/LICENSE-MIT"
-    }
-  ],
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "grunt test"
-  },
-  "dependencies": {
-    "cheerio": "^0.19.0",
-    "handlebars": "~4.0.4",
-    "svgo": "~0.6.0"
-  },
-  "devDependencies": {
-    "grunt": "^1.0.0",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-internal": "^1.0.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^1.0.0"
-  },
+  "description": "Generate an SVG icon system (based on `<symbol>`) of a specified folder. Lightweight fork of the [Lorti/grunt-svg-symbols](https://github.com/Lorti/grunt-svg-symbols).",
   "keywords": [
     "gruntplugin",
     "svg",
@@ -61,5 +11,40 @@
     "map",
     "sprite",
     "sprites"
-  ]
+  ],
+  "homepage": "https://github.com/Greenek/grunt-svg-symbols",
+  "bugs": {
+    "url": "https://github.com/Greenek/grunt-svg-symbols/issues"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Paweł Golonko <pgolonko@gmail.com> (http://greenek.com/)",
+    "Manuel Wieser <office@manuelwieser.com> (http://manu.ninja/)"
+  ],
+  "repository": "github:Greenek/grunt-svg-symbols",
+  "main": "tasks/svg_symbols.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "cheerio": "~0.22.0",
+    "handlebars": "~4.0.4",
+    "svgo": "^1.0.5"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0"
+  },
+  "peerDependencies": {
+    "grunt": ">=0.4"
+  },
+  "files": [
+    "tasks",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=4"
+  }
 }

@@ -1,3 +1,5 @@
+Copyright (c) 2018 Paweł Golonko
+
 Copyright (c) 2015 Manuel Wieser
 
 Permission is hereby granted, free of charge, to any person
